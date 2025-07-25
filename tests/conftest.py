@@ -1,7 +1,7 @@
 import pytest
 
-from ai.structured_outputs.posts import PostsStructuredOutput
-from services.openai_service import OpenAIService
+from src.ai.structured_outputs.posts import PostsStructuredOutput
+from src.services.openai_service import OpenAIService
 
 
 @pytest.fixture
