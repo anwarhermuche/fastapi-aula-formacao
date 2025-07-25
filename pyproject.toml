@@ -6,15 +6,38 @@ authors = [
     {name = "Anwar Hermuche",email = "anwarhermuche2@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.13,<4.0"
 dependencies = [
     "fastapi (>=0.116.1,<0.117.0)",
-    "uvicorn (>=0.35.0,<0.36.0)"
+    "uvicorn (>=0.35.0,<0.36.0)",
+    "langchain-openai (>=0.3.28,<0.4.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)",
+    "sqlalchemy (>=2.0.41,<3.0.0)",
+    "psycopg2 (>=2.9.10,<3.0.0)",
+    "alembic (>=1.16.4,<2.0.0)",
+    "pytest (>=8.4.1,<9.0.0)"
 ]
 
 [tool.poetry]
 packages = [{include = "posts_crud_aovivo", from = "src"}]
 
+[tool.ruff]
+line-length = 80
+select = ["E", "F", "I"]  # "I" ativa as regras de isort (organização de imports)
+
+[tool.ruff.isort]
+case-sensitive = false        # Deixa o sort A-Z independente de maiúsculas/minúsculas
+force-sort-within-sections = true  # Ordena tudo dentro de cada seção
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.5"
+taskipy = "^1.14.1"
+pytest-cov = "^6.2.1"
+
+[tool.taskipy.tasks]
+format = "ruff check . --select I --fix && ruff format ."
+run = "task format && uvicorn src.main:app --host 127.0.0.1 --port 8000"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
