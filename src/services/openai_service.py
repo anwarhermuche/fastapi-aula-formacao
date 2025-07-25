@@ -5,11 +5,11 @@ from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel
 
-from ai.prompts.generate_post_prompt import (
+from src.ai.prompts.generate_post_prompt import (
     GENERATE_POST_PROMPT_ADULT,
     GENERATE_POST_PROMPT_KIDS,
 )
-from schemas.posts import PostInput
+from src.schemas.posts import PostInput
 
 load_dotenv()
 

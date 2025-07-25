@@ -4,9 +4,9 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Response
 from sqlalchemy.orm import Session
 
-from crud.posts import PostsCRUD
-from db.engine import get_db
-from schemas.posts import Post, PostInput, PostResponse
+from src.crud.posts import PostsCRUD
+from src.db.engine import get_db
+from src.schemas.posts import PostInput, PostResponse
 
 posts_router = APIRouter(prefix="/api/v1/posts", tags=["posts"])
 

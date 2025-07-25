@@ -2,10 +2,10 @@ from datetime import datetime
 
 from sqlalchemy.orm import Session
 
-from ai.structured_outputs.posts import PostsStructuredOutput
-from models.posts import Posts
-from schemas.posts import PostInput, PostResponse
-from services.openai_service import OpenAIService
+from src.ai.structured_outputs.posts import PostsStructuredOutput
+from src.models.posts import Posts
+from src.schemas.posts import PostInput
+from src.services.openai_service import OpenAIService
 
 openai_service = OpenAIService(structured_output=PostsStructuredOutput)
 

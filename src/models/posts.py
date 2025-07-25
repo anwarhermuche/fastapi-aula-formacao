@@ -2,8 +2,8 @@ from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Integer, String
 
-from db.base import Base
-from db.engine import engine
+from src.db.base import Base
+from src.db.engine import engine
 
 
 class Posts(Base):
