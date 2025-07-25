@@ -29,7 +29,10 @@ jobs:
           echo "PYTHONPATH=$(pwd)/src" >> $GITHUB_ENV
 
       - name: Ruff lint
-        run: poetry run ruff .
+        run: poetry run ruff check . --fix
+
+      - name: Ruff format
+        run: poetry run ruff format .
 
       - name: Run tests
         run: poetry run pytest
