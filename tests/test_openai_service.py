@@ -1,6 +1,11 @@
-from ..src.ai.structured_outputs.posts import PostsStructuredOutput
-from ..src.schemas.posts import PostInput
-from ..src.services.openai_service import OpenAIService
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
+from ai.structured_outputs.posts import PostsStructuredOutput
+from schemas.posts import PostInput
+from services.openai_service import OpenAIService
 
 
 def test_generate_output_openai_service(openai_service: OpenAIService):

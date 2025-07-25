@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from src.routes.api.v1.posts import (
+from routes.api.v1.posts import (
     posts_router,
 )
 
