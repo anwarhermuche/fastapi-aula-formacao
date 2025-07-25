@@ -5,28 +5,31 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  lint-test:
     runs-on: ubuntu-latest
+    env:
+      PYTHON_VERSION: "3.13.5"
+      POETRY_VERSION: "2.1.3"
+
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13.5'
+          python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Instalar Poetry 2.1.3
-        run: pip install poetry==2.1.3
+      - name: Install Poetry
+        run: pip install poetry==${{ env.POETRY_VERSION }}
 
-      - name: Instalar dependências com Poetry
-        run: poetry install
+      # Instala só as dependências (grupo dev incluso) e NÃO o seu pacote
+      - name: Install deps (no-root)
+        run: |
+          poetry install --no-root --with dev
+          echo "PYTHONPATH=$(pwd)/src" >> $GITHUB_ENV
 
-      - name: Verificar lint com Ruff
-        run: poetry run ruff check . --fix
+      - name: Ruff lint
+        run: poetry run ruff .
 
-      - name: Corrigir lint com Ruff
-        run: poetry run ruff format .
-
-      - name: Rodar testes com Pytest
+      - name: Run tests
         run: poetry run pytest
