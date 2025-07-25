@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "posts_crud_aovivo", from = "src"}]
+packages = [{include = "posts_crud_aovivo", from = "."}]
 
 [tool.ruff]
 line-length = 80
