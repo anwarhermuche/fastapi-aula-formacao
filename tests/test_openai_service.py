@@ -8,7 +8,7 @@ def test_generate_output_openai_service(openai_service: OpenAIService):
     post = PostInput(
         idea="Teste",
         communication_tone="Teste",
-        target_audience="Teste", 
+        target_audience="Teste",
         for_kids=False,
     )
 
